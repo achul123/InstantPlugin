@@ -1,0 +1,43 @@
+# Enable or UnEnable (true or false) and messages
+#settings
+join-quit-message:
+  enabled: true
+  join-message: "%player_name% a rejoind"
+  leave-message: "%player_name% a quitté"
+
+chat-message:
+  enabled: true
+  player-chat: "%vault_prefix% %player_name% > %message%"
+
+# messages of commands
+# fly
+only-players: "&cCette commande ne peut être exécutée que par un joueur."
+no-permission: "&cVous n'avez pas la permission de fly."
+invalid-player: "&cCe joueur n'existe pas."
+flying-enabled: "&a%player_name% peut maintenant fly."
+flying-disabled: "&c%player_name% ne peut plus fly."
+# ping
+ping-message: "Votre ping est de %player_colored_ping% ms."
+#invsee
+player-not-online: "&cCe joueur n'est pas connecté"
+# ipweather
+ipweather-off: "La pluie et la neige sont maintenant désactivées."
+ipweather-on: "La pluie et la neige sont maintenant activées."
+# skull
+own-head: "Vous avez reçu votre propre tête !"
+error-head: "Erreur lors de la création de la tête !"
+invalid-skull-use: "Utilisation incorrecte de la commande ! Utilisez /skull pour votre propre tête ou /skull {joueur} pour la tête d'un joueur spécifié."
+
+# modinfo for moderator
+modinfo:
+  - "&l=====%player_name%====="
+  - "Informations&4 >&r"
+  - "Pseudo&4 >&r %player_name%"
+  - "Premium&4 >&r %premium%"
+  - "Grade&4 >&r %vault_prefix%"
+  - "Ip&4 >&r %player_ip%"
+  - "UUID &4>&r %player_uuid%"
+  - "Dernière connexion&4 >&r %player_last_join_date%"
+  - "Première connexion&4 >&r %player_first_join_date%"
+  - "Connecté&4 >&r %player_online%"
+  - "&l=====%player_name%====="
