@@ -16,21 +16,21 @@ public class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         Utilities.defaultConfigSave();
-        getCommand("ping").setExecutor(new ping(this));
+        getCommand("ping").setExecutor(new ping());
         getCommand("skull").setExecutor(new Skull());
-        getCommand("ipweather").setExecutor(new IpWeather(this));
+        getCommand("ipweather").setExecutor(new IpWeather());
         getCommand("invsee").setExecutor(new invsee(this));
         getCommand("fly").setExecutor(new fly());
         getCommand("ipreload").setExecutor(new IpReload());
         getCommand("seenip").setExecutor(new seenip());
         getCommand("modinfo").setExecutor(new modinfo());
         Bukkit.getPluginManager().registerEvents(this, this);
-        getLogger().info("Le plugin est activé !");
+        getLogger().info("Plugin Enable!");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("Le plugin est désactivé !");
+        getLogger().info("Plugin disable!");
     }
 
     // message join

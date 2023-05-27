@@ -24,9 +24,9 @@ player-not-online: "&cCe joueur n'est pas connecté"
 ipweather-off: "La pluie et la neige sont maintenant désactivées."
 ipweather-on: "La pluie et la neige sont maintenant activées."
 # skull
-own-head: "Vous avez reçu votre propre tête !"
-error-head: "Erreur lors de la création de la tête !"
-invalid-skull-use: "Utilisation incorrecte de la commande ! Utilisez /skull pour votre propre tête ou /skull {joueur} pour la tête d'un joueur spécifié."
+head-received: "Vous avez reçu la tête de %player_skull_name%"
+# seenip
+ip-seen: "address ip %ip%"
 
 # modinfo for moderator
 modinfo:

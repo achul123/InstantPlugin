@@ -1,56 +1,35 @@
 package me.achul123.commands;
 
 import me.achul123.Main;
-import me.achul123.Utilities;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-public class IpWeather implements CommandExecutor {
-    private final Main main;
+import static me.achul123.Utilities.config;
+import static me.achul123.Utilities.parsePlaceholders;
 
-    public IpWeather(Main main) {
-        this.main = main;
-    }
+public class IpWeather implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        FileConfiguration config = Utilities.configGet();
-
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(config.getString("only-players").replace("&", "§"));
-            return true;
-        }
-
+        if (!(sender instanceof Player) || args.length > 1) return false;
         Player player = (Player) sender;
-
-        if (args.length != 1) {
-            player.sendMessage(ChatColor.RED + "usage : /ipweather <on/off>");
-            return true;
-        }
-
         String arg = args[0].toLowerCase();
 
         if (arg.equals("on")) {
             Bukkit.getWorlds().forEach(world -> {
                 world.setStorm(true);
-                world.setWeatherDuration(0);
+                world.setWeatherDuration(999999999);
             });
-            player.sendMessage(config.getString("ipweather-on").replace("&", "§"));
+            player.sendMessage(parsePlaceholders(player, config.getString("ipweather-on")));
         } else if (arg.equals("off")) {
             Bukkit.getWorlds().forEach(world -> {
                 world.setStorm(false);
-                world.setWeatherDuration(0);
+                world.setWeatherDuration(999999999);
             });
-            player.sendMessage(config.getString("ipweather-off").replace("&", "§"));
-        } else {
-            player.sendMessage(ChatColor.RED + "usage : /ipweather <on/off>");
-        }
-
-        return true;
+            player.sendMessage(parsePlaceholders(player, config.getString("ipweather-off")));
+        } return true;
     }
 }

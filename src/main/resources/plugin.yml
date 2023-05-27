@@ -1,35 +1,41 @@
 name: InstantPlugin
 main: me.achul123.Main
-version: 1.0
+version: 1.1
 
 depend: [PlaceholderAPI]
 commands:
   fly:
     description: fly
     permission: ip.fly
+    usage: "&c/fly <player>"
   skull:
     description: skull
     permission: ip.skull
+    usage: "&c/skull <player>"
   seenip:
     description: seenip
     permission: ip.seenip
+    usage: "&c/seenip <player>"
   modinfo:
     description: modinfo
     permission: ip.modinfo
     usage: "§c/modinfo <player>"
   ipreload:
     description: Reload the plugin
-    usage: "§cUsage: /ipreload"
     permission: ip.reload
+    usage: "§cUsage: /ipreload"
   invsee:
     description: Invsee a player
     permission: ip.invsee
+    usage: "&c/invsee <player>"
   ping:
     description: Display your ping
     permission: ip.ping
+    usage: "&c/ping"
   ipweather:
     description: On or off the weather
     permission: ip.weather
+    usage: "&c/ipweather <on/off>"
 
 permissions:
   ip.reload:
