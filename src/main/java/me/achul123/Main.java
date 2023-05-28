@@ -68,7 +68,7 @@ public class Main extends JavaPlugin implements Listener {
         YamlConfiguration config = Utilities.configGet();
         boolean chatFormatEnabled = config.getBoolean("chat-message.enabled");
         if (chatFormatEnabled) {
-            String tosend = config.getString("chat-message.playerchat");
+            String tosend = config.getString("chat-message.player-chat");
             if (tosend == null) {
                 Bukkit.getLogger().severe("No chat message was set in the config !!!!!!! DumbASS");
                 return;
