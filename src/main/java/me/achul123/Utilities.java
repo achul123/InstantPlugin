@@ -1,9 +1,12 @@
 package me.achul123;
 
 import com.google.common.base.Charsets;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -11,17 +14,18 @@ import java.nio.file.Paths;
 import java.util.logging.Level;
 
 public final class Utilities {
-    private static YamlConfiguration savedConfig = new YamlConfiguration();
+    private final static String plugin_name = "InstantPlugin";
+    public static YamlConfiguration config = new YamlConfiguration();
     public static void defaultConfigSave() {
         try {
-            FileInputStream config = new FileInputStream("plugins/InstantPlugin/config.yml");
+            FileInputStream config = new FileInputStream("plugins/" + plugin_name + "/config.yml");
             config.close();
         } catch (FileNotFoundException e) {
             try {
-                Files.createDirectories(Paths.get("plugins/InstantPlugin"));
-                FileOutputStream config = new FileOutputStream("plugins/InstantPlugin/config.yml");
+                Files.createDirectories(Paths.get("plugins/" + plugin_name));
+                FileOutputStream config = new FileOutputStream("plugins/" + plugin_name + "/config.yml");
                 InputStream default_config = Utilities.class.getClassLoader().getResourceAsStream("config.yml");
-                byte[] buffer = new byte[default_config.available()];;
+                byte[] buffer = new byte[default_config.available()];
                 default_config.read(buffer);
                 config.write(buffer);
                 default_config.close();
@@ -34,15 +38,28 @@ public final class Utilities {
         }
         loadConfig();
     }
-    public static YamlConfiguration configGet() {
-        return savedConfig;
-    }
 
     public static void loadConfig() {
         try {
-            savedConfig.load(new InputStreamReader(Files.newInputStream(Paths.get("plugins/InstantPlugin/config.yml")), Charsets.UTF_8));
+            config.load(new InputStreamReader(Files.newInputStream(Paths.get("plugins/"+ plugin_name + "/config.yml")), Charsets.UTF_8));
         } catch (InvalidConfigurationException | IOException e) {
             Bukkit.getLogger().log(Level.SEVERE, "Cannot load config.yml" , e);
         }
+    }
+
+    public static void saveConfig() {
+        try {
+            config.save("plugins/" + plugin_name + "/config.yml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static YamlConfiguration configGet() {
+        return config;
+    }
+
+    public static String parsePlaceholders(Player player, String message) {
+        return ChatColor.translateAlternateColorCodes('&', PlaceholderAPI.setPlaceholders(player, message));
     }
 }

@@ -26,7 +26,7 @@ public class modinfo implements CommandExecutor {
 
         OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(args[0]);
         if (offlinePlayer == null || !offlinePlayer.hasPlayedBefore()) {
-            sender.sendMessage(ChatColor.RED + "Impossible de trouver le joueur " + args[0]);
+            sender.sendMessage(ChatColor.RED + "Impossible to find the player " + args[0]);
             return true;
         }
 
@@ -47,7 +47,7 @@ public class modinfo implements CommandExecutor {
                     isPremium = false;
                 }
 
-                String premiumStatus = isPremium ? "oui" : "non";
+                String premiumStatus = isPremium ? "yes" : "no";
                 YamlConfiguration config = Utilities.configGet();
                 List<String> lines = config.getStringList("modinfo");
                 if (lines == null) {

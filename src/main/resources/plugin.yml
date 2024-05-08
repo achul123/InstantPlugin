@@ -12,6 +12,7 @@ commands:
     permission: ip.skull
   seenip:
     description: seenip
+    Usage: "/seenip <player>"
     permission: ip.seenip
   modinfo:
     description: modinfo
@@ -23,12 +24,14 @@ commands:
     permission: ip.reload
   invsee:
     description: Invsee a player
+    usage : "/invsee <joueur>"
     permission: ip.invsee
   ping:
     description: Display your ping
     permission: ip.ping
   ipweather:
     description: On or off the weather
+    usage : "/ipweather <on/off>"
     permission: ip.weather
 
 permissions:

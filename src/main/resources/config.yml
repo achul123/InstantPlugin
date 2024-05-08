@@ -2,8 +2,8 @@
 #settings
 join-quit-message:
   enabled: true
-  join-message: "%player_name% a rejoind"
-  leave-message: "%player_name% a quitté"
+  join-message: "%player_name% has joined"
+  leave-message: "%player_name% has left"
 
 chat-message:
   enabled: true
@@ -11,33 +11,33 @@ chat-message:
 
 # messages of commands
 # fly
-only-players: "&cCette commande ne peut être exécutée que par un joueur."
-no-permission: "&cVous n'avez pas la permission de fly."
-invalid-player: "&cCe joueur n'existe pas."
-flying-enabled: "&a%player_name% peut maintenant fly."
-flying-disabled: "&c%player_name% ne peut plus fly."
+only-players: "&cThis command can only be executed by a player."
+no-permission: "&cYou do not have permission to fly."
+invalid-player: "&cThis player does not exist."
+flying-enabled: "&a%player_name% can now fly."
+flying-disabled: "&c%player_name% can no longer fly."
 # ping
-ping-message: "Votre ping est de %player_colored_ping% ms."
-#invsee
-player-not-online: "&cCe joueur n'est pas connecté"
+ping-message: "Your ping is %player_colored_ping% ms."
+# invsee
+player-not-online: "&cThis player is not online."
 # ipweather
-ipweather-off: "La pluie et la neige sont maintenant désactivées."
-ipweather-on: "La pluie et la neige sont maintenant activées."
+ipweather-off: "Rain and snow are now disabled."
+ipweather-on: "Rain and snow are now enabled."
 # skull
-own-head: "Vous avez reçu votre propre tête !"
-error-head: "Erreur lors de la création de la tête !"
-invalid-skull-use: "Utilisation incorrecte de la commande ! Utilisez /skull pour votre propre tête ou /skull {joueur} pour la tête d'un joueur spécifié."
+own-head: "You received your own head!"
+error-head: "Error creating the head!"
+invalid-skull-use: "Incorrect usage of the command! Use /skull for your own head or /skull {player} for the head of a specified player."
 
 # modinfo for moderator
 modinfo:
   - "&l=====%player_name%====="
-  - "Informations&4 >&r"
-  - "Pseudo&4 >&r %player_name%"
+  - "Information&4 >&r"
+  - "Username&4 >&r %player_name%"
   - "Premium&4 >&r %premium%"
-  - "Grade&4 >&r %vault_prefix%"
-  - "Ip&4 >&r %player_ip%"
+  - "Rank&4 >&r %vault_prefix%"
+  - "IP&4 >&r %player_ip%"
   - "UUID &4>&r %player_uuid%"
-  - "Dernière connexion&4 >&r %player_last_join_date%"
-  - "Première connexion&4 >&r %player_first_join_date%"
-  - "Connecté&4 >&r %player_online%"
+  - "Last Connection&4 >&r %player_last_join_date%"
+  - "First Connection&4 >&r %player_first_join_date%"
+  - "Connected&4 >&r %player_online%"
   - "&l=====%player_name%====="

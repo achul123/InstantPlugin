@@ -11,11 +11,6 @@ public class seenip implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length != 1) {
-            sender.sendMessage(ChatColor.RED + "Usage: /seenip <player>");
-            return true;
-        }
-
         Player target = Bukkit.getPlayer(args[0]);
 
         if (target == null) {

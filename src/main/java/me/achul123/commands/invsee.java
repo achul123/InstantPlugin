@@ -21,27 +21,22 @@ public class invsee implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         YamlConfiguration config = Utilities.configGet();
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(config.getString("only-players").replace("&", "§"));
-            return true;
-        }
+        Player player = (Player) sender;
 
-        if (args.length != 1) {
-            sender.sendMessage("usage : /invsee <joueur>");
+        if (sender == null) {
+            sender.sendMessage(Utilities.parsePlaceholders(player ,config.getString("only-players")));
             return true;
         }
 
         Player target = Bukkit.getPlayer(args[0]);
 
         if (target == null || !target.isOnline()) {
-            sender.sendMessage(config.getString("player-not-online").replace("&", "§"));
+            sender.sendMessage(Utilities.parsePlaceholders(player ,config.getString("player-not-online")));
             return true;
         }
 
-        Player player = (Player) sender;
-
         Inventory targetInventory = target.getInventory();
-        Inventory playerInventory = Bukkit.createInventory(null, 36, "Inventaire de " + target.getName());
+        Inventory playerInventory = Bukkit.createInventory(null, 36, "Inventory of " + target.getName());
         playerInventory.setContents(targetInventory.getContents());
         player.openInventory(playerInventory);
 

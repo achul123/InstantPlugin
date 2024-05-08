@@ -15,33 +15,33 @@ public class Skull implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         YamlConfiguration config = Utilities.configGet();
         if (args.length == 0) {
-            // /skull - Donne la tête du joueur qui a exécuté la commande
+            Player player = null;
             if (sender instanceof Player) {
-                Player player = (Player) sender;
+                player = (Player) sender;
+
                 ItemStack skull = createSkull(player.getName());
                 if (skull != null) {
                     player.getInventory().addItem(skull);
-                    player.sendMessage(config.getString("own-head").replace("&", "§"));
+                    player.sendMessage(Utilities.parsePlaceholders(player, config.getString("own-head")));
                 } else {
-                    player.sendMessage(config.getString("error-head").replace("&", "§"));
+                    player.sendMessage(Utilities.parsePlaceholders(player, config.getString("error-head")));
                 }
             } else {
-                sender.sendMessage(config.getString("only-players").replace("&", "§"));
+                sender.sendMessage(Utilities.parsePlaceholders(player, config.getString("only-players")));
             }
         } else if (args.length == 1) {
-            // /skull {joueur} - Donne la tête du joueur spécifié
             String playerName = args[0];
             ItemStack skull = createSkull(playerName);
             if (skull != null) {
                 if (sender instanceof Player) {
                     Player player = (Player) sender;
                     player.getInventory().addItem(skull);
-                    player.sendMessage("Vous avez reçu la tête de " + playerName + " !");
+                    player.sendMessage("You have received the head of " + playerName + " !");
                 } else {
-                    sender.sendMessage("La tête de " + playerName + " a été générée !");
+                    sender.sendMessage("The head of" + playerName + " has been generated !");
                 }
             } else {
-                sender.sendMessage("Erreur lors de la création de la tête !");
+                sender.sendMessage("Head creation error !");
             }
         } else {
             sender.sendMessage(config.getString("invalid-skull-use").replace("&", "§"));
